@@ -15,7 +15,7 @@ public class _Selection_Sort {
         Scanner scanner=new Scanner(System.in);
         n=scanner.nextInt();
         for(int i=0;i<n;i++){
-            a[i]=scanner.nextInt();
+            a[i]=scanner.nextInt() ;
         }
         int[] result=new int[n];
         for (int i=0;i<n;i++){
