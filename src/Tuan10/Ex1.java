@@ -1,5 +1,6 @@
+package Tuan10;
+
 import java.util.*;
-import java.io.*;
 
 class Node {
     Node left;
@@ -16,10 +17,10 @@ class Node {
 class Solution {
 
     /*
-    class Node
+    class Tuan10.Node
         int data;
-        Node left;
-        Node right;
+        Tuan10.Node left;
+        Tuan10.Node right;
     */
     public static int height(Node root) {
         if(root==null) return -1;

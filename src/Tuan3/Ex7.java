@@ -1,10 +1,9 @@
 package Tuan3;
-import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Arrays;
 import java.util.Scanner;
-public class ThreeSum {
+public class Ex7 {
 
     public static void main(String[] args) {
         int count=0;

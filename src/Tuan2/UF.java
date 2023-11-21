@@ -1,4 +1,4 @@
-package Tuan3;
+package Tuan2;
 public class UF {
     private int[] parent;
     private byte[] rank;

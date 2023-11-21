@@ -1,10 +1,6 @@
 package Tuan3;
 
-import java.util.Scanner;
-import edu.princeton.cs.algs4.*;
-import java.util.Arrays;
-
-public class binarySearch {
+public class Ex2 {
 
 //    public static void main(String[] args) {
 //        int n;
