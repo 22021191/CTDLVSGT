@@ -1,10 +1,10 @@
 package Tuan6;
 
-public class Student {
+public class StudentEx6 {
     private int id;
     private String fname;
     private double cgpa;
-    public Student(int id, String fname, double cgpa) {
+    public StudentEx6(int id, String fname, double cgpa) {
         super();
         this.id = id;
         this.fname = fname;

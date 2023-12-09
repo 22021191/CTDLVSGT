@@ -1,12 +1,6 @@
 package Tuan13;
 import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
 import java.util.*;
-import java.util.concurrent.*;
-import java.util.function.*;
-import java.util.regex.*;
 import java.util.stream.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
@@ -30,7 +24,6 @@ class Cost implements Comparable<Cost>
 
 }
 class Result {
-
 
     public static int prims(int n, List<List<Integer>> edges, int start) {
         List<List<Cost>> adj = new ArrayList<>();

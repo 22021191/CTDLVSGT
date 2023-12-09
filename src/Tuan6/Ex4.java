@@ -7,20 +7,20 @@ public class Ex4 {
         Scanner in = new Scanner(System.in);
         int testCases = Integer.parseInt(in.nextLine());
 
-        List<Student> studentList = new ArrayList<Student>();
+        List<StudentEx6> studentList = new ArrayList<StudentEx6>();
         while(testCases>0){
             int id = in.nextInt();
             String fname = in.next();
             double cgpa = in.nextDouble();
 
-            Student st = new Student(id, fname, cgpa);
+            StudentEx6 st = new StudentEx6(id, fname, cgpa);
             studentList.add(st);
 
             testCases--;
         }
-        Collections.sort(studentList, new Comparator<Student>(){
+        Collections.sort(studentList, new Comparator<StudentEx6>(){
             @Override
-            public int compare(Student x, Student y)
+            public int compare(StudentEx6 x, StudentEx6 y)
             {
                 if (x.getCgpa() != y.getCgpa()){
                     return Double.compare(y.getCgpa(), x.getCgpa());
@@ -31,7 +31,7 @@ public class Ex4 {
                     return x.getId()-y.getId();
             }
         });
-        for(Student st: studentList){
+        for(StudentEx6 st: studentList){
             System.out.println(st.getFname());
         }
     }
