@@ -1,9 +1,9 @@
 package Tuan10;
 import java.util.*;
-import java.io.*;
+
 public class Ex3 {
 
-    public static Node lca(Node root, int v1, int v2) {
+    public static NodeEx1 lca(NodeEx1 root, int v1, int v2) {
         // Write your code here.
         if(root.data>Math.max(v1,v2)){
                 return lca(root.left,v1,v2);
@@ -13,11 +13,11 @@ public class Ex3 {
         return root;
     }
 
-    public static Node insert(Node root, int data) {
+    public static NodeEx1 insert(NodeEx1 root, int data) {
         if(root == null) {
-            return new Node(data);
+            return new NodeEx1(data);
         } else {
-            Node cur;
+            NodeEx1 cur;
             if(data <= root.data) {
                 cur = insert(root.left, data);
                 root.left = cur;
@@ -32,7 +32,7 @@ public class Ex3 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int t = scan.nextInt();
-        Node root = null;
+        NodeEx1 root = null;
         while(t-- > 0) {
             int data = scan.nextInt();
             root = insert(root, data);
@@ -40,7 +40,7 @@ public class Ex3 {
         int v1 = scan.nextInt();
         int v2 = scan.nextInt();
         scan.close();
-        Node ans = lca(root,v1,v2);
+        NodeEx1 ans = lca(root,v1,v2);
         System.out.println(ans.data);
     }
 

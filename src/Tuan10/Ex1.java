@@ -2,12 +2,12 @@ package Tuan10;
 
 import java.util.*;
 
-class Node {
-    Node left;
-    Node right;
+class NodeEx1 {
+    NodeEx1 left;
+    NodeEx1 right;
     int data;
 
-    Node(int data) {
+    NodeEx1(int data) {
         this.data = data;
         left = null;
         right = null;
@@ -22,7 +22,7 @@ class Solution {
         Tuan10.Node left;
         Tuan10.Node right;
     */
-    public static int height(Node root) {
+    public static int height(NodeEx1 root) {
         if(root==null) return -1;
         int heightLeft=height(root.left);
         int heightRight=height(root.right);
@@ -30,11 +30,11 @@ class Solution {
         // Write your code here.
     }
 
-    public static Node insert(Node root, int data) {
+    public static NodeEx1 insert(NodeEx1 root, int data) {
         if(root == null) {
-            return new Node(data);
+            return new NodeEx1(data);
         } else {
-            Node cur;
+            NodeEx1 cur;
             if(data <= root.data) {
                 cur = insert(root.left, data);
                 root.left = cur;
@@ -49,7 +49,7 @@ class Solution {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int t = scan.nextInt();
-        Node root = null;
+        NodeEx1 root = null;
         while(t-- > 0) {
             int data = scan.nextInt();
             root = insert(root, data);

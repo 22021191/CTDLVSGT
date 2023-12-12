@@ -1,96 +1,69 @@
 
-import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.function.*;
-import java.util.regex.*;
-import java.util.stream.*;
-
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toList;
-
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 class Result {
+    List<List<Integer>> adj = new ArrayList<>();
+    boolean[] visited;
 
-    /*
-     * Complete the 'roadsAndLibraries' function below.
-     *
-     * The function is expected to return a LONG_INTEGER.
-     * The function accepts following parameters:
-     *  1. INTEGER n
-     *  2. INTEGER c_lib
-     *  3. INTEGER c_road
-     *  4. 2D_INTEGER_ARRAY cities
-     */
-    static boolean[] checked;
-    static List<List<Long>> cities;
+    long count = 0;
 
-    public static long roadsAndLibraries(long n, long c_lib, long c_road, List<List<Long>> c) {
-        cities = new ArrayList<>();
-        // Write your code here
-        checked = new boolean[9999999];
-        for (int i = 0; i < n; i++) {
-            cities.add(new ArrayList<>( i));
-        }
-        for (List<Long> e : c) {
-            cities.get(Math.toIntExact(e.get(0))).add(e.get(1) );
-            cities.get(Math.toIntExact(e.get(1))).add(e.get(0) );
-
-        }
-        for (long i = 0; i < n; i++) {
-            checked[(int) i] = false;
-        }
-
-        List<Integer> lib = new ArrayList<>();
-        long count=0;
-        for (long i = 0; i < n; i++){
-            if(!checked[(int) i]){
-                int ans=Dfs((int) i);
-                lib.add(ans);
-                count+=ans-1;
+    public Result(List<List<Integer>> adj, int n) {
+        visited = new boolean[9999999];
+        this.adj = adj;
+        for(int i = 1; i < n+1; i++){
+            if(!visited[i]){
+                dfs(i,adj);
+                count++;
             }
         }
-        return Math.min(count*c_road+c_lib*lib.size(),c_lib*n);
     }
-    public static int Dfs(int u){
-        checked[u] = true;
-        int result =1;
-        for (int i=0;i<cities.get(u).size();i++){
-            if(!checked[Math.toIntExact(cities.get(u).get(i))]){
-                result+=Dfs(Math.toIntExact(cities.get(u).get(i)));
+
+    private void dfs(int i, List<List<Integer>> adj) {
+        visited[i] = true;
+        for(int w : adj.get(i)){
+            if(!visited[w]){
+                dfs(w,adj);
             }
         }
-        return result;
     }
-
-
 }
-
 public class RoadsAndLibraries {
-    public static void main(String[] args) throws IOException {
+
+    public static void main(String[] args){
+
         Scanner input = new Scanner(System.in);
         int q = input.nextInt();
         for(int i = 0; i < q; i++){
-            List<List<Long>> adj = new ArrayList<>();
+            List<List<Integer>> adj = new ArrayList<>();
             long n = input.nextLong();
             long m = input.nextLong();
-            long c_lib = input.nextLong();
-            long c_road = input.nextLong();
-
-            for(int j = 0; j < m; j++){
-                long v = input.nextInt();
-                long w = input.nextInt();
-                List<Long> tmp=new ArrayList<>();
-                tmp.add(v-1);
-                tmp.add(w-1);
+            int c_lib = input.nextInt();
+            int c_road = input.nextInt();
+            if(m == 0){
+                System.out.println(n*c_lib);
+                continue;
+            }
+            for(int k = 0; k <= n; k++){
+                List<Integer> tmp = new ArrayList<>();
                 adj.add(tmp);
             }
 
-            long result = Result.roadsAndLibraries(n, c_lib, c_road, adj);
-            System.out.println(result);
+            for(int j = 0; j < m; j++){
+                int v = input.nextInt();
+                int w = input.nextInt();
+                adj.get(v).add(w);
+                adj.get(w).add(v);
+            }
+            Result ans = new Result(adj,(int)n);
+            long cost = (c_road*(n-ans.count)+c_lib* ans.count);
 
+            if((long) n *c_lib>cost){
+                System.out.println(cost);
+            } else{
+                System.out.println(n*c_lib);
+            }
         }
+
     }
 }

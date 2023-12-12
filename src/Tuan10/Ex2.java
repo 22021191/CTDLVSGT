@@ -1,10 +1,9 @@
 package Tuan10;
 import java.util.*;
-import java.io.*;
 
 public class Ex2 {
 
-        public static void preOrder( Node root ) {
+        public static void preOrder( NodeEx1 root ) {
 
             if( root == null)
                 return;
@@ -23,12 +22,12 @@ public class Ex2 {
 
     */
 
-        public static Node insert(Node root,int data) {
+        public static NodeEx1 insert(NodeEx1 root, int data) {
             if(root==null){
-                return new Node(data);
+                return new NodeEx1(data);
             }
            else{
-               Node current;
+               NodeEx1 current;
                if(root.data>data){
                    current= insert(root.left,data);
                    root.left=current;
@@ -43,7 +42,7 @@ public class Ex2 {
         public static void main(String[] args) {
             Scanner scan = new Scanner(System.in);
             int t = scan.nextInt();
-            Node root = null;
+            NodeEx1 root = null;
             while(t-- > 0) {
                 int data = scan.nextInt();
                 root = insert(root, data);
